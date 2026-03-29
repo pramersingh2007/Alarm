@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Multi-Tool Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 60px);
+            padding: 20px;
+        }
+        .admin-card {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .card-header {
+            background: var(--accent-color);
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        #config-view { display: none; }
+        .error-msg {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            display: none;
+            border: 1px solid #fecaca;
+        }
+        .success-msg {
+            background: #dcfce7;
+            color: #166534;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            display: none;
+            border: 1px solid #bbf7d0;
+        }
+    </style>
+</head>
+<body class="light-mode theme-inter layout-modern">
+    <div class="app-wrapper">
+        <nav class="global-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-shield-halved"></i> Security Center
+            </div>
+            <div style="margin-left: auto;">
+                <a href="index.html" class="btn btn-sm" style="color: white; border: 1px solid white;">Exit Admin</a>
+            </div>
+        </nav>
+
+        <div class="admin-wrapper">
+            <!-- LOGIN VIEW -->
+            <div id="login-view" class="admin-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-user-lock" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                    <h2 style="margin: 0;">Admin Login</h2>
+                </div>
+                <div class="card-body">
+                    <div id="login-error" class="error-msg">Invalid username or password.</div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter password">
+                    </div>
+                    <button id="btn-login" class="btn btn-primary" style="width: 100%; margin-top: 25px; height: 45px;">
+                        Login to Dashboard
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONFIG VIEW -->
+            <div id="config-view" class="admin-card" style="max-width: 800px;">
+                <div class="card-header" style="background: #0f172a;">
+                    <i class="fa-solid fa-gears" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                    <h2 style="margin: 0;">API Key Manager</h2>
+                </div>
+                <div class="card-body">
+                    <div id="status-msg" class="success-msg"></div>
+                    
+                    <!-- Add New Key Form -->
+                    <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid var(--border-color);">
+                        <h4 style="margin-top: 0; margin-bottom: 15px;"><i class="fa-solid fa-plus"></i> Add New API Key</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 120px auto; gap: 10px;">
+                            <input type="text" id="new-key" placeholder="Enter Remove.bg API Key" style="font-size: 0.85rem;">
+                            <input type="number" id="new-limit" value="50" min="1" placeholder="Limit" title="Usage Limit">
+                            <button id="btn-add-key" class="btn btn-primary btn-sm">Add Key</button>
+                        </div>
+                    </div>
+
+                    <!-- Keys Table -->
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                            <thead>
+                                <tr style="text-align: left; border-bottom: 2px solid var(--border-color);">
+                                    <th style="padding: 10px;">API KEY</th>
+                                    <th style="padding: 10px;">USAGE</th>
+                                    <th style="padding: 10px;">STATUS</th>
+                                    <th style="padding: 10px;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="key-table-body">
+                                <!-- Keys will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                        <button id="btn-logout" class="btn btn-sm btn-secondary">
+                            <i class="fa-solid fa-power-off"></i> Logout Admin
+                        </button>
+                        <p style="font-size: 0.7rem; color: var(--text-muted); margin: 0;">Data is stored locally in browser storage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const VIEWS = {
+            login: document.getElementById('login-view'),
+            config: document.getElementById('config-view')
+        };
+        
+        const AUTH = {
+            user: "Remove.parmar",
+            pass: "@remove123PARMAR"
+        };
+
+        const KEY_TABLE = document.getElementById('key-table-body');
+        const DEFAULT_KEY = 'jsguBELu2ZyfGUCXF6qShDmR';
+
+        // Session Persistence
+        if(sessionStorage.getItem('admin_logged_in') === 'true') {
+            showConfig();
+        }
+
+        function showConfig() {
+            VIEWS.login.style.display = 'none';
+            VIEWS.config.style.display = 'block';
+            renderKeys();
+        }
+
+        document.getElementById('btn-login').onclick = () => {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            const err = document.getElementById('login-error');
+
+            if(u === AUTH.user && p === AUTH.pass) {
+                sessionStorage.setItem('admin_logged_in', 'true');
+                err.style.display = 'none';
+                showConfig();
+            } else {
+                err.style.display = 'block';
+            }
+        };
+
+        function getPool() {
+            let pool = JSON.parse(localStorage.getItem('remove_bg_pool') || '[]');
+            if (pool.length === 0) {
+                pool = [{ id: Date.now(), key: DEFAULT_KEY, limit: 50, used: 0 }];
+                savePool(pool);
+            }
+            return pool;
+        }
+
+        function savePool(pool) {
+            localStorage.setItem('remove_bg_pool', JSON.stringify(pool));
+        }
+
+        function renderKeys() {
+            const pool = getPool();
+            KEY_TABLE.innerHTML = pool.map(item => {
+                const isExhausted = item.used >= item.limit;
+                const status = isExhausted ? 
+                    '<span style="color: #ef4444; font-weight: 800;">EXHAUSTED</span>' : 
+                    '<span style="color: #10b981; font-weight: 800;">ACTIVE</span>';
+                
+                return `
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 12px; font-family: monospace;">${item.key.substring(0,8)}...${item.key.substring(item.key.length-4)}</td>
+                        <td style="padding: 12px;">
+                            <div style="width: 60px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; margin-bottom: 4px;">
+                                <div style="width: ${(item.used/item.limit)*100}%; height: 100%; background: ${isExhausted ? '#ef4444' : '#2563eb'};"></div>
+                            </div>
+                            ${item.used} / ${item.limit}
+                        </td>
+                        <td style="padding: 12px;">${status}</td>
+                        <td style="padding: 12px;">
+                            <button onclick="deleteKey(${item.id})" class="btn btn-sm btn-danger" style="padding: 4px 8px; font-size: 0.7rem;">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        document.getElementById('btn-add-key').onclick = () => {
+            const key = document.getElementById('new-key').value.trim();
+            const limit = parseInt(document.getElementById('new-limit').value);
+            
+            if (key && limit > 0) {
+                const pool = getPool();
+                pool.push({ id: Date.now(), key, limit, used: 0 });
+                savePool(pool);
+                renderKeys();
+                document.getElementById('new-key').value = '';
+                const msg = document.getElementById('status-msg');
+                msg.innerText = 'Key added to pool!';
+                msg.style.display = 'block';
+                setTimeout(() => msg.style.display = 'none', 2000);
+            }
+        };
+
+        window.deleteKey = (id) => {
+            let pool = getPool();
+            pool = pool.filter(k => k.id !== id);
+            savePool(pool);
+            renderKeys();
+        };
+
+        document.getElementById('btn-logout').onclick = () => {
+            sessionStorage.removeItem('admin_logged_in');
+            location.reload();
+        };
+    </script>
+</body>
+</html>

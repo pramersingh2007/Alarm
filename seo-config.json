@@ -1,0 +1,198 @@
+{
+  "index.html": {
+    "title": "Multi-Tool Suite - Free Online PDF, Image & ID Tools",
+    "description": "Access 14+ professional, private, and free web tools for PDF merging, image compression, background removal, bio data creation, and more. No server uploads.",
+    "keywords": "online tools, free pdf tools, image editor online, privacy focused utilities, web tools hub",
+    "toolType": "WebApplication",
+    "faqs": [
+      { "q": "Are these tools really free to use?", "a": "Yes, all tools in the Multi-Tool Suite are 100% free with no hidden costs, subscriptions, or limits." },
+      { "q": "Is my data safe and private?", "a": "Absolutely. All processing happens locally in your browser. Your files and data are never uploaded to our servers, ensuring total privacy." },
+      { "q": "Do I need to create an account?", "a": "No registration or login is required. You can start using any tool immediately without providing any personal information." },
+      { "q": "What kind of tools are available?", "a": "We offer a wide range of tools including PDF mergers, compressors, image resizers, AI background removers, passport photo makers, and professional bio data generators." }
+    ]
+  },
+  "bio-data-maker.html": {
+    "title": "Bio Data Maker - Create Professional Resumes Online Free",
+    "description": "Create beautiful, professional bio data and resumes in seconds. Choose from multiple modern templates, customize colors, and download as PDF instantly. No signup required.",
+    "keywords": "bio data maker, resume builder, free resume creator, online cv maker, professional bio data generator",
+    "toolType": "WebApplication",
+    "features": ["Modern Professional Templates", "Real-time PDF Preview", "Custom Style Controls", "No Registration", "Privacy Focused"],
+    "faqs": [
+      { "q": "Is this bio data maker free?", "a": "Yes, it is 100% free with no hidden charges or premium plans." },
+      { "q": "Do I need to create an account?", "a": "No, you can start creating and downloading your resume without any login." }
+    ]
+  },
+  "image-compressor.html": {
+    "title": "Image Compressor - Reduce JPG, PNG & WebP Size Free",
+    "description": "Compress images online without losing quality. Reduce file size of JPG, PNG, and WebP images. Set target KB size and bulk download instantly.",
+    "keywords": "image compressor, reduce image size, photo compressor online, compress jpg, compress png, image size reducer",
+    "toolType": "WebApplication",
+    "features": ["Batch Image Processing", "Lossless Compression", "Target KB Size Setting", "Multi-format Support", "100% Secure"],
+    "faqs": [
+      { "q": "How many images can I compress at once?", "a": "You can upload and compress up to 20 images in a single batch." },
+      { "q": "Does compression affect photo quality?", "a": "Our algorithm minimizes file size while maintaining the highest possible visual clarity." }
+    ]
+  },
+  "image-resize.html": {
+    "title": "Image Resizer - High Quality Photo Dimension Changer",
+    "description": "Resize your images to any dimension with high-quality scaling. Change width and height in pixels or percentage. Fast, free, and works entirely in your browser.",
+    "keywords": "image resizer, resize photo online, change image dimensions, scale image, free photo resizer, high quality image resizing",
+    "toolType": "WebApplication",
+    "features": ["High-Quality Smoothing", "Social Media Presets", "Pixel & % Modes", "Built-in Cropper", "Bulk Resizing"],
+    "faqs": [
+      { "q": "Will my images look blurry after resizing?", "a": "No, we use high-quality image smoothing algorithms to keep your photos sharp." },
+      { "q": "Can I resize by percentage?", "a": "Yes, you can easily switch to percentage mode to scale your images proportionally." }
+    ]
+  },
+  "passport-photo-crop.html": {
+    "title": "Passport Photo Crop Tool - Standard 35x45mm ID Maker",
+    "description": "Crop and format your photo to standard passport or ID size (35x45mm). Generate a printable A4 sheet with multiple photos instantly.",
+    "keywords": "passport photo crop, id photo maker, passport size photo generator, 35x45mm photo tool, print passport photos",
+    "toolType": "WebApplication",
+    "features": ["Standard 35x45mm Ratio", "Printable A4 Grid", "Easy Drag & Crop", "Instant HD Preview", "Mobile Friendly"],
+    "faqs": [
+      { "q": "What is the standard passport photo size?", "a": "The most common size is 35mm x 45mm (3.5cm x 4.5cm), which this tool uses by default." },
+      { "q": "Can I download a printable sheet?", "a": "Yes, you can generate an A4 sheet containing multiple copies of your passport photo." }
+    ]
+  },
+  "passport-size-with-name.html": {
+    "title": "Passport Photo with Name & Date - Free Online Generator",
+    "description": "Create professional passport size photos with custom name and date printed at the bottom. Download single HD image or generate an A4 printable sheet.",
+    "keywords": "passport photo with name, passport photo with date, id photo generator with text, name on passport photo",
+    "toolType": "WebApplication",
+    "features": ["Custom Name Overlay", "Photograph Date Printing", "Professional Black Bar Style", "A4 Printable Layout", "HD PNG Output"],
+    "faqs": [
+      { "q": "Is it mandatory to add a name and date?", "a": "Many competitive exams and ID applications require name and date on the photo. Our tool makes this easy." },
+      { "q": "How many photos fit on one A4 sheet?", "a": "You can fit up to 35 passport-sized photos on a single A4 sheet using this tool." }
+    ]
+  },
+  "jpg-to-pdf.html": {
+    "title": "JPG to PDF Converter - Merge Images to PDF Online",
+    "description": "Convert JPG, PNG, and WebP images to PDF documents. Rearrange pages, adjust quality, and merge multiple images into one file easily.",
+    "keywords": "jpg to pdf, convert image to pdf, images to pdf converter, merge images to pdf, photo to pdf free",
+    "toolType": "WebApplication",
+    "features": ["Multiple Image Support", "Page Order Rearrangement", "Adjustable PDF Quality", "Fast Browser Conversion", "Secure & Private"],
+    "faqs": [
+      { "q": "Can I convert PNG images to PDF too?", "a": "Yes, our converter supports JPG, PNG, WebP, and other common image formats." },
+      { "q": "Is there a limit to how many images I can merge?", "a": "You can upload and merge as many images as you need into a single PDF document." }
+    ]
+  },
+  "pdf-to-jpg.html": {
+    "title": "PDF to JPG Converter - Extract PDF Pages as Images",
+    "description": "Convert PDF pages into high-quality JPG or PNG images. Extract specific pages or the entire document as a ZIP archive instantly.",
+    "keywords": "pdf to jpg, convert pdf to image, extract images from pdf, pdf to png converter, pdf page to image",
+    "toolType": "WebApplication",
+    "features": ["High Resolution Extraction", "ZIP Export for All Pages", "Page-by-Page Selection", "Browser-side Processing", "No File Uploads"],
+    "faqs": [
+      { "q": "Can I extract specific pages from a PDF?", "a": "Yes, you can choose to convert individual pages or the entire document into images." },
+      { "q": "What is the quality of the resulting images?", "a": "The images are extracted at high DPI to ensure that the text and graphics remain clear." }
+    ]
+  },
+  "image-merge.html": {
+    "title": "Image Merger - Combine Multiple Photos Together Online",
+    "description": "Merge multiple images into a single picture. Combine photos vertically or horizontally, adjust spacing, and set background colors easily.",
+    "keywords": "image merger, combine photos, join images online, stitch photos together, photo joiner free",
+    "toolType": "WebApplication",
+    "features": ["Vertical & Horizontal Stitching", "Customizable Gap Spacing", "Drag-to-Reorder Images", "Background Color Options", "Bulk Image Merging"],
+    "faqs": [
+      { "q": "Can I join images side-by-side?", "a": "Yes, you can choose between horizontal or vertical merging modes." },
+      { "q": "Is there a limit on the number of photos?", "a": "You can merge up to 10-15 images depending on your browser's memory." }
+    ]
+  },
+  "pdf-merge.html": {
+    "title": "PDF Merger - Combine Multiple PDF Files Online Free",
+    "description": "Merge multiple PDF documents into a single file. Drag and drop to rearrange order, fast processing, and secure local merging.",
+    "keywords": "pdf merger, combine pdf files, join pdf documents, merge pdf online free, secure pdf joiner",
+    "toolType": "WebApplication",
+    "features": ["Easy Drag-and-Drop", "Rearrange Page Order", "Fast Processing Speed", "100% Private Local Merge", "Unlimited File Merging"],
+    "faqs": [
+      { "q": "Is merging PDF files secure?", "a": "Yes, the merging happens entirely in your browser. Your files never leave your computer." },
+      { "q": "Can I change the order of files after uploading?", "a": "Absolutely. You can drag and drop the file list to set the exact order you want." }
+    ]
+  },
+  "ocr-tool.html": {
+    "title": "OCR Tool - Free Online Image to Text Converter AI",
+    "description": "Free online Optical Character Recognition (OCR) tool. Extract text from images, scanned documents, and photos accurately using AI technology.",
+    "keywords": "ocr tool, extract text from image, image to text converter, online ocr, photo to text ai",
+    "toolType": "WebApplication",
+    "features": ["Advanced AI Recognition", "Multi-language Support", "One-click Copy to Clipboard", "Pre-processing for Accuracy", "Offline Recognition Capability"],
+    "faqs": [
+      { "q": "How accurate is the text extraction?", "a": "We use Tesseract AI, which is highly accurate for most printed text and scanned documents." },
+      { "q": "Which languages are supported?", "a": "Our OCR tool supports English, Hindi, Spanish, and over 10 other common languages." }
+    ]
+  },
+  "pdf-compressor.html": {
+    "title": "PDF Compressor - Reduce PDF File Size Online Free",
+    "description": "Compress PDF files online for free. Reduce the file size of your PDF documents while maintaining high quality and readability.",
+    "keywords": "pdf compressor, reduce pdf size, shrink pdf file, compress pdf online, low size pdf maker",
+    "toolType": "WebApplication",
+    "features": ["High Compression Ratio", "Batch PDF Compression", "Quality-First Algorithm", "Secure Local Processing", "Instant Download"],
+    "faqs": [
+      { "q": "Will my PDF quality decrease?", "a": "Our tool uses smart compression to reduce size while keeping text and images sharp." },
+      { "q": "Is there a limit on file size?", "a": "You can compress large PDF files up to 100MB directly in your browser." }
+    ]
+  },
+  "copy-pdf-text.html": {
+    "title": "Copy Text from PDF - Extract Content Easily Online",
+    "description": "Easily extract and copy text from PDF files. Upload your document and get clean, selectable text instantly. Works entirely in your browser.",
+    "keywords": "extract text from pdf, copy pdf text, pdf to text converter, read text from pdf, pdf content extractor",
+    "toolType": "WebApplication",
+    "features": ["Extract from Scanned PDFs", "Clean Text Formatting", "Works 100% Offline", "No Data Storage", "Fast Text Selection"],
+    "faqs": [
+      { "q": "Can I copy text from a scanned PDF?", "a": "Yes, our tool uses OCR to detect text even in non-selectable scanned documents." },
+      { "q": "Is the extracted text editable?", "a": "Yes, the text is extracted as plain text which you can edit or paste anywhere." }
+    ]
+  },
+  "add-white-bg.html": {
+    "title": "Add White Background to Images Online Free",
+    "description": "Quickly add a solid white background to transparent PNGs or images. Perfect for professional product photos and e-commerce listings.",
+    "keywords": "add white background, white background generator, product photo background, photo edit white bg",
+    "toolType": "WebApplication",
+    "features": ["Auto Background Replacement", "Bulk Processing", "HD PNG Output", "Ideal for Amazon/eBay", "Privacy Focused"],
+    "faqs": [
+      { "q": "Why do I need a white background?", "a": "Most e-commerce platforms like Amazon require product photos to have a pure white background." },
+      { "q": "Does it work with bulk images?", "a": "Yes, you can upload multiple transparent images and add white backgrounds to all of them at once." }
+    ]
+  },
+  "background-remover.html": {
+    "title": "AI Background Remover - Remove Image BG for Free",
+    "description": "Remove backgrounds from images instantly using AI. Make image backgrounds transparent with our high-quality, free online eraser tool.",
+    "keywords": "background remover, remove background from image, transparent background, bg eraser, ai bg removal",
+    "toolType": "WebApplication",
+    "features": ["One-Click AI Removal", "Edge Smoothing", "HD Transparent PNG", "No Sign-up Required", "Local AI Processing"],
+    "faqs": [
+      { "q": "Is this tool completely free?", "a": "Yes, our background remover is 100% free with no watermarks." },
+      { "q": "Does it handle complex hair details?", "a": "Our AI model is optimized to handle fine details like hair and complex edges accurately." }
+    ]
+  },
+  "about.html": {
+    "title": "About Us - Multi-Tool Suite",
+    "description": "Learn more about Multi-Tool Suite, our mission to provide free browser-based tools, and our commitment to user privacy and security.",
+    "keywords": "about us, multi-tool suite, free online tools, privacy focused tools",
+    "toolType": "WebPage"
+  },
+  "terms.html": {
+    "title": "Terms of Service - Multi-Tool Suite",
+    "description": "Read our terms of service to understand the rules and guidelines for using Multi-Tool Suite's online utilities.",
+    "keywords": "terms of service, usage rules, legal information",
+    "toolType": "WebPage"
+  },
+  "privacy.html": {
+    "title": "Privacy Policy - Multi-Tool Suite",
+    "description": "Our privacy policy explains how we protect your data. We process everything locally in your browser and never upload your files to our servers.",
+    "keywords": "privacy policy, data security, browser-side processing, secure tools",
+    "toolType": "WebPage"
+  },
+  "contact.html": {
+    "title": "Contact Us - Get in Touch with Multi-Tool Suite",
+    "description": "Have questions or feedback? Contact the Multi-Tool Suite team. We're here to help with your inquiries about our free online tools.",
+    "keywords": "contact us, support, feedback, customer service",
+    "toolType": "WebPage"
+  },
+  "disclaimer.html": {
+    "title": "Disclaimer - Multi-Tool Suite",
+    "description": "Read the Multi-Tool Suite disclaimer to understand the limitations of liability and usage of our free online utility tools.",
+    "keywords": "disclaimer, legal notice, liability, usage terms",
+    "toolType": "WebPage"
+  }
+}

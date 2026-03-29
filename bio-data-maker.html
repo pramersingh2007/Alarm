@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Data Maker - Create Professional Resumes Online Free</title>
+    <meta name="description" content="Create beautiful, professional bio data and resumes in seconds. Choose from multiple modern templates, customize colors, and download as PDF instantly. No signup required.">
+    <meta name="keywords" content="bio data maker, resume builder, free resume creator, online cv maker, professional bio data generator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://parmartools.netlify.app/bio-data-maker.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parmartools.netlify.app/bio-data-maker.html">
+    <meta property="og:title" content="Bio Data Maker - Create Professional Resumes Online Free">
+    <meta property="og:description" content="Create beautiful, professional bio data and resumes in seconds. Choose from multiple modern templates, customize colors, and download as PDF instantly. No signup required.">
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "WebApplication","name": "Bio Data Maker","description": "Create beautiful, professional bio data and resumes in seconds. Choose from multiple modern templates, customize colors, and download as PDF instantly. No signup required.","url": "https://parmartools.netlify.app/bio-data-maker.html","offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }}</script><script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type":"Question","name":"Is this bio data maker free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is 100% free with no hidden charges or premium plans."}},{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No, you can start creating and downloading your resume without any login."}}]}</script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="font-stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- HTML2PDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+/* Custom Properties & Modern Palette */
+:root {
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Light Mode */
+    --bg-color: #f8fafc;
+    --panel-bg: #ffffff;
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --preview-bg: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --border-radius: 12px;
+}
+
+body.dark-mode {
+    --bg-color: #020617;
+    --panel-bg: #0f172a;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #1e293b;
+    --input-bg: #020617;
+    --input-border: #334155;
+    --preview-bg: #0f172a;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Landing Page Specific Styles */
+.landing-header {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 5%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .landing-header {
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-color);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.8px;
+}
+
+.logo-link i { 
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.2));
+}
+
+.hero-gradient {
+    padding: 100px 20px;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent),
+                radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.05), transparent);
+}
+
+.hero-content { max-width: 800px; margin: 0 auto; }
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; }
+
+.search-container { max-width: 600px; margin: 0 auto; position: relative; }
+.search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.2rem; }
+
+.main-search {
+    width: 100%;
+    padding: 18px 20px 18px 55px !important;
+    font-size: 1.1rem !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
+    border: 2px solid var(--border-color) !important;
+}
+
+.section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+.category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+.category-header h2 { font-size: 1.8rem; font-weight: 800; }
+.category-header .line { flex: 1; height: 2px; background: var(--border-color); }
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.tool-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tool-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--accent-color);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.professional-footer {
+    background: var(--panel-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 80px 20px 40px;
+}
+
+.footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+
+/* Global Navigation for Tools */
+.global-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    height: 60px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1000;
+}
+
+body.dark-mode .global-nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-brand {
+    font-weight: 800;
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.2px;
+}
+
+.nav-brand:hover {
+    border-color: var(--accent-color);
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .nav-brand:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: var(--spacing-xl);
+    background-color: var(--panel-bg);
+    min-width: 280px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 12px;
+    z-index: 1001;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: navAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes navAppear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-dropdown-content.show { display: block; }
+
+.nav-dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.nav-dropdown-content a:hover {
+    background: var(--bg-color);
+    color: var(--accent-color);
+    padding-left: 20px;
+}
+
+.nav-dropdown-content a.active { 
+    background: rgba(37, 99, 235, 0.08); 
+    color: var(--accent-color); 
+    font-weight: 700; 
+}
+
+.nav-current-tool {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.3px;
+    opacity: 0.9;
+}
+
+/* App Layout for Tools */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 320px;
+    background-color: var(--panel-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.right-panel {
+    flex: 1;
+    background-color: var(--bg-color);
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+}
+
+.right-panel-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Tool Components */
+.card {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+}
+
+.panel-header { padding: var(--spacing-lg); border-bottom: 1px solid var(--border-color); margin-bottom: var(--spacing-md); }
+.panel-header h1 { font-size: 1.4rem; font-weight: 800; }
+
+.btn { padding: 0.6rem 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
+.btn-primary { background: var(--accent-color); color: white; }
+.btn-secondary { background: var(--bg-color); color: var(--text-color); border: 1px solid var(--border-color); }
+
+/* Form Elements */
+.form-group { margin-bottom: var(--spacing-md); }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; }
+input[type="text"], input[type="number"], select, input[type="range"] { 
+    width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-color);
+}
+
+/* SEO Section */
+.seo-rich-content { margin-top: 40px; }
+.seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.faq-card { background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; }
+
+.nav-separator { display: block; border-top: 1px solid var(--border-color); margin: 8px 0; }
+
+/* FIX: Ensure left-panel is visible on mobile */
+@media (max-width: 1024px) {
+    body { overflow: auto; }
+    .app-wrapper { height: auto; }
+    .app-container { flex-direction: column; height: auto; overflow: visible; }
+    .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); height: auto; overflow: visible; }
+    .right-panel { width: 100%; height: auto; overflow: visible; padding: var(--spacing-md); }
+}
+
+@media (max-width: 600px) {
+    .right-panel { padding: var(--spacing-sm); }
+}
+
+/* Professional Footer Styles */
+.professional-footer {
+    background-color: #020617; /* Premium Deep Black/Navy */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 100px 0 40px;
+    margin-top: auto;
+    color: #f8fafc;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.footer-logo i {
+    color: var(--accent-color);
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.3));
+}
+
+.footer-tagline {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 360px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-links a {
+    color: #94a3b8;
+    font-size: 1.3rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.footer-social-links a:hover {
+    color: #ffffff;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-5px) rotate(8deg);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.footer-heading {
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.9;
+}
+
+.footer-links-list {
+    list-style: none;
+}
+
+.footer-links-list li {
+    margin-bottom: 18px;
+}
+
+.footer-links-list a {
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links-list a:hover {
+    color: #ffffff;
+    transform: translateX(8px);
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.1), rgba(255,255,255,0));
+    margin-bottom: 40px;
+}
+
+.footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-copyright {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 50%;
+    background-color: inherit;
+    animation: status-pulse 2s infinite;
+}
+
+@keyframes status-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand-section {
+        grid-column: span 2;
+        margin-bottom: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .professional-footer {
+        padding: 80px 0 40px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .footer-brand-section {
+        grid-column: span 1;
+    }
+    .footer-logo { justify-content: center; }
+    .footer-bottom-row {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+<body class="light-mode theme-inter layout-modern">
+    <div class="app-wrapper">
+        <!-- Global Navigation -->
+                        <nav class="global-nav">
+            <div class="nav-dropdown">
+                <button class="nav-brand" id="nav-dropdown-btn">
+                    <i class="fa-solid fa-layer-group"></i> Multi-Tool Suite <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                </button>
+                <div class="nav-dropdown-content" id="nav-dropdown-content">
+                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="bio-data-maker.html" class="active"><i class="fa-solid fa-file-signature"></i> Bio Data Maker</a>
+                    <a href="image-compressor.html"><i class="fa-solid fa-compress"></i> Image Compressor</a>
+                    <a href="image-resize.html"><i class="fa-solid fa-expand"></i> Image Resize</a>
+                    <a href="passport-photo-crop.html"><i class="fa-solid fa-crop-simple"></i> Passport Photo Crop</a>
+                    <a href="passport-size-with-name.html"><i class="fa-solid fa-id-badge"></i> Passport Photo with Name</a>
+                    <a href="jpg-to-pdf.html"><i class="fa-solid fa-file-pdf"></i> JPG → PDF</a>
+                    <a href="pdf-to-jpg.html"><i class="fa-solid fa-image"></i> PDF to JPG</a>
+                    <a href="image-merge.html"><i class="fa-solid fa-regular fa-object-group"></i> Image Merge</a>
+                    <a href="pdf-merge.html"><i class="fa-solid fa-solid fa-object-group"></i> PDF Merge</a>
+                    <a href="ocr-tool.html"><i class="fa-solid fa-solid fa-file-lines"></i> OCR Tool</a>
+                    <a href="pdf-compressor.html"><i class="fa-solid fa-solid fa-file-zipper"></i> PDF Compressor</a>
+                    <a href="copy-pdf-text.html"><i class="fa-solid fa-solid fa-copy"></i> Copy PDF Text</a>
+                    <a href="add-white-bg.html"><i class="fa-solid fa-solid fa-square"></i> Add White BG</a>
+                    <a href="background-remover.html"><i class="fa-solid fa-solid fa-eraser"></i> Background Remover</a>
+                </div>
+            </div>
+            <div class="nav-current-tool">
+                <span>Bio Data Maker</span>
+            </div>
+        </nav>
+        <div class="app-container">
+        <!-- Controls Panel -->
+        <aside class="left-panel">
+            <header class="panel-header">
+                <div class="logo-title">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <h1>Bio Data Maker</h1>
+                </div>
+                <p class="subtitle">Create beautiful resumes in seconds</p>
+                <div class="utility-controls">
+                    <button id="btn-sample" class="btn btn-secondary" title="Fill with sample data"><i class="fa-solid fa-magic"></i> Sample Data</button>
+                    <button id="btn-reset" class="btn btn-danger" title="Clear all data"><i class="fa-solid fa-trash-can"></i> Reset</button>
+                    <button id="btn-print" class="btn btn-secondary" title="Print format"><i class="fa-solid fa-print"></i> Print</button>
+                    <button id="btn-download" class="btn btn-primary" title="Download as PDF"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+                </div>
+            </header>
+            
+            <div class="controls-content">
+                <!-- Customization & Theming -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-palette"></i> Customization</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="theme-toggle">Theme</label>
+                            <select id="theme-toggle">
+                                <option value="light">Light Mode</option>
+                                <option value="dark">Dark Mode</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="accent-color">Accent Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="accent-color" value="#2563eb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="font-select">Typography</label>
+                            <select id="font-select">
+                                <option value="Inter">Inter (Modern)</option>
+                                <option value="Poppins">Poppins (Friendly)</option>
+                                <option value="Merriweather">Merriweather (Traditional)</option>
+                                <option value="Playfair Display">Playfair Display (Elegant)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="layout-select">Layout / Template</label>
+                            <select id="layout-select">
+                                <option value="modern">Modern (2-Column)</option>
+                                <option value="classic">Classic (1-Column)</option>
+                                <option value="professional">Professional</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="elegant">Elegant (Centered)</option>
+                                <option value="creative">Creative (Color Header)</option>
+                                <option value="compact">Compact (Dense)</option>
+                                <option value="bold">Bold (Heavy Headers)</option>
+                                <option value="twotone">Two-Tone (Split BG)</option>
+                                <option value="timeline">Timeline (Vertical)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Identity -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-user"></i> Identity</h2>
+                    <div class="form-group">
+                        <label for="full-name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="full-name" maxlength="100" placeholder="e.g. Rahul Sharma">
+                    </div>
+                    <div class="form-group">
+                        <label for="headline">Headline / Role</label>
+                        <input type="text" id="headline" maxlength="120" placeholder="e.g. Software Engineer">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" maxlength="600" rows="3" placeholder="A brief summary about yourself..."></textarea>
+                        <small class="char-count" id="summary-count">0/600</small>
+                    </div>
+                    <div class="form-group photo-upload-group">
+                        <label for="profile-photo">Profile Photo (Optional)</label>
+                        <div class="photo-controls">
+                            <label class="custom-file-upload">
+                                <input type="file" id="profile-photo" accept="image/jpeg, image/png">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Choose Image
+                            </label>
+                            <button id="btn-remove-photo" class="btn btn-danger btn-small" style="display:none;"><i class="fa-solid fa-xmark"></i> Remove</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-address-book"></i> Contact Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="text" id="phone" placeholder="+91 98765 43210">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" id="email" placeholder="rahul@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <input type="text" id="location" placeholder="City, Country">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website URL</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-globe"></i>
+                                <input type="url" id="website" placeholder="https://...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-brands fa-linkedin"></i>
+                                <input type="url" id="linkedin" placeholder="linkedin.com/in/...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="github">GitHub</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-brands fa-github"></i>
+                                <input type="url" id="github" placeholder="github.com/...">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-bolt"></i> Skills</h2>
+                    <div id="skills-container"></div>
+                    <button id="btn-add-skill" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Skill</button>
+                </section>
+
+                <!-- Experience -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+                    <div id="experience-container"></div>
+                    <button id="btn-add-experience" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Experience</button>
+                </section>
+
+                <!-- Education -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                    <div id="education-container"></div>
+                    <button id="btn-add-education" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Education</button>
+                </section>
+
+                <!-- Projects -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-rocket"></i> Projects</h2>
+                    <div id="projects-container"></div>
+                    <button id="btn-add-project" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Project</button>
+                </section>
+
+                <!-- Languages -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-language"></i> Languages</h2>
+                    <div id="languages-container"></div>
+                    <button id="btn-add-language" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Language</button>
+                </section>
+
+                <!-- Hobbies -->
+                <section class="form-section card">
+                    <h2><i class="fa-solid fa-gamepad"></i> Hobbies</h2>
+                    <div id="hobbies-container"></div>
+                    <button id="btn-add-hobby" class="btn btn-outline btn-full"><i class="fa-solid fa-plus"></i> Add Hobby</button>
+                </section>
+
+                <!-- Personal Details (Matrimonial) -->
+                <section class="form-section card matrimonial-card">
+                    <div class="section-header-toggle">
+                        <h2><i class="fa-solid fa-ring"></i> Personal / Matrimonial Details</h2>
+                        <label class="switch">
+                            <input type="checkbox" id="toggle-personal">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <p class="section-hint">Toggle to add family details, horoscopes, etc.</p>
+                    <div id="personal-details-container" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group"><label for="dob">Date of Birth</label><input type="date" id="dob"></div>
+                            <div class="form-group"><label for="gender">Gender</label>
+                                <select id="gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="marital-status">Marital Status</label>
+                                <select id="marital-status"><option value="">Select</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select>
+                            </div>
+                            <div class="form-group"><label for="nationality">Nationality</label>
+                                <select id="nationality"><option value="">Select</option><option value="Indian">Indian</option><option value="NRI">NRI</option><option value="Other">Other</option></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="height">Height</label>
+                                <select id="height"><option value="">Select</option><option value="4'0&quot;">4'0"</option><option value="4'1&quot;">4'1"</option><option value="4'2&quot;">4'2"</option><option value="4'3&quot;">4'3"</option><option value="4'4&quot;">4'4"</option><option value="4'5&quot;">4'5"</option><option value="4'6&quot;">4'6"</option><option value="4'7&quot;">4'7"</option><option value="4'8&quot;">4'8"</option><option value="4'9&quot;">4'9"</option><option value="4'10&quot;">4'10"</option><option value="4'11&quot;">4'11"</option><option value="5'0&quot;">5'0"</option><option value="5'1&quot;">5'1"</option><option value="5'2&quot;">5'2"</option><option value="5'3&quot;">5'3"</option><option value="5'4&quot;">5'4"</option><option value="5'5&quot;">5'5"</option><option value="5'6&quot;">5'6"</option><option value="5'7&quot;">5'7"</option><option value="5'8&quot;">5'8"</option><option value="5'9&quot;">5'9"</option><option value="5'10&quot;">5'10"</option><option value="5'11&quot;">5'11"</option><option value="6'0&quot;">6'0"</option><option value="6'1&quot;">6'1"</option><option value="6'2&quot;">6'2"</option><option value="6'3&quot;">6'3"</option><option value="6'4&quot;">6'4"</option><option value="6'5&quot;">6'5"</option><option value="6'6&quot;">6'6"</option><option value="6'7&quot;">6'7"</option><option value="6'8&quot;">6'8"</option><option value="6'9&quot;">6'9"</option><option value="6'10&quot;">6'10"</option><option value="6'11&quot;">6'11"</option><option value="7'0&quot;">7'0"</option></select>
+                            </div>
+                            <div class="form-group"><label for="weight">Weight (kg)</label>
+                                <select id="weight"><option value="">Select</option><option value="40">40 kg</option><option value="41">41 kg</option><option value="42">42 kg</option><option value="43">43 kg</option><option value="44">44 kg</option><option value="45">45 kg</option><option value="46">46 kg</option><option value="47">47 kg</option><option value="48">48 kg</option><option value="49">49 kg</option><option value="50">50 kg</option><option value="51">51 kg</option><option value="52">52 kg</option><option value="53">53 kg</option><option value="54">54 kg</option><option value="55">55 kg</option><option value="56">56 kg</option><option value="57">57 kg</option><option value="58">58 kg</option><option value="59">59 kg</option><option value="60">60 kg</option><option value="61">61 kg</option><option value="62">62 kg</option><option value="63">63 kg</option><option value="64">64 kg</option><option value="65">65 kg</option><option value="66">66 kg</option><option value="67">67 kg</option><option value="68">68 kg</option><option value="69">69 kg</option><option value="70">70 kg</option><option value="71">71 kg</option><option value="72">72 kg</option><option value="73">73 kg</option><option value="74">74 kg</option><option value="75">75 kg</option><option value="76">76 kg</option><option value="77">77 kg</option><option value="78">78 kg</option><option value="79">79 kg</option><option value="80">80 kg</option><option value="81">81 kg</option><option value="82">82 kg</option><option value="83">83 kg</option><option value="84">84 kg</option><option value="85">85 kg</option><option value="86">86 kg</option><option value="87">87 kg</option><option value="88">88 kg</option><option value="89">89 kg</option><option value="90">90 kg</option><option value="91">91 kg</option><option value="92">92 kg</option><option value="93">93 kg</option><option value="94">94 kg</option><option value="95">95 kg</option><option value="96">96 kg</option><option value="97">97 kg</option><option value="98">98 kg</option><option value="99">99 kg</option><option value="100">100 kg</option><option value="101">101 kg</option><option value="102">102 kg</option><option value="103">103 kg</option><option value="104">104 kg</option><option value="105">105 kg</option><option value="106">106 kg</option><option value="107">107 kg</option><option value="108">108 kg</option><option value="109">109 kg</option><option value="110">110 kg</option><option value="111">111 kg</option><option value="112">112 kg</option><option value="113">113 kg</option><option value="114">114 kg</option><option value="115">115 kg</option><option value="116">116 kg</option><option value="117">117 kg</option><option value="118">118 kg</option><option value="119">119 kg</option><option value="120">120 kg</option></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="religion">Religion</label>
+                                <select id="religion"><option value="">Select</option><option value="Hindu">Hindu</option><option value="Muslim">Muslim</option><option value="Christian">Christian</option><option value="Sikh">Sikh</option><option value="Buddhist">Buddhist</option><option value="Jain">Jain</option><option value="Other">Other</option></select>
+                            </div>
+                            <div class="form-group"><label for="caste">Caste</label>
+                                <input type="text" id="caste" placeholder="e.g. Brahmin, Rajput, etc.">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="mother-tongue">Mother Tongue</label><input type="text" id="mother-tongue" placeholder="e.g. Hindi"></div>
+                            <div class="form-group"><label for="blood-group">Blood Group</label>
+                                <select id="blood-group"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select>
+                            </div>
+                        </div>
+                        <div class="form-group"><label for="permanent-address">Permanent Address</label><textarea id="permanent-address" rows="2" placeholder="Full residential address..."></textarea></div>
+                                                <div class="form-row">
+                            <div class="form-group"><label for="father-name">Father's Name</label><input type="text" id="father-name" placeholder="Name"></div>
+                            <div class="form-group"><label for="father-occ">Father's Occupation</label><input type="text" id="father-occ" placeholder="Occupation"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="mother-name">Mother's Name</label><input type="text" id="mother-name" placeholder="Name"></div>
+                            <div class="form-group"><label for="mother-occ">Mother's Occupation</label><input type="text" id="mother-occ" placeholder="Occupation"></div>
+                        </div>
+                        <div class="form-group"><label for="siblings">Siblings Details</label><textarea id="siblings" rows="2" placeholder="e.g. 1 elder brother (Software Engineer), 1 younger sister"></textarea></div>
+                    </div>
+                </section>
+                
+                <div style="height: 50px;"></div> <!-- Bottom padding -->
+            </div>
+                    
+                    
+        </aside>
+
+        <!-- Preview Panel -->
+        <main class="right-panel" id="preview-panel">
+            <div class="document-wrapper">
+                <div class="a4-container" id="pdf-content">
+                    <header class="preview-header">
+                        <div class="header-content">
+                            <h1 id="preview-name"></h1>
+                            <h2 id="preview-role"></h2>
+                            <div class="contact-pills" id="preview-contacts"></div>
+                        </div>
+                        <div class="header-photo" id="preview-photo-container" style="display:none;">
+                            <img id="preview-photo" src="" alt="Profile Photo" style="display:none;">
+                        </div>
+                    </header>
+
+                    <div class="preview-body layout-modern-container">
+                        <div class="preview-column-left">
+                            <!-- Summary -->
+                            <div class="preview-section" id="preview-summary-section" style="display:none;">
+                                <h3 class="section-title">Profile</h3>
+                                <p id="preview-summary"></p>
+                            </div>
+
+                            <!-- Personal Details -->
+                            <div class="preview-section" id="preview-personal-section" style="display:none;">
+                                <h3 class="section-title">Personal Details</h3>
+                                <table class="personal-details-table" id="preview-personal-table">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            
+
+                            <!-- Skills -->
+                            <div class="preview-section" id="preview-skills-section" style="display:none;">
+                                <h3 class="section-title">Skills</h3>
+                                <div id="preview-skills-list"></div>
+                            </div>
+                            
+                            <!-- Languages -->
+                            <div class="preview-section" id="preview-languages-section" style="display:none;">
+                                <h3 class="section-title">Languages</h3>
+                                <div id="preview-languages-list" class="tags-container"></div>
+                            </div>
+
+                            <!-- Hobbies -->
+                            <div class="preview-section" id="preview-hobbies-section" style="display:none;">
+                                <h3 class="section-title">Hobbies</h3>
+                                <div id="preview-hobbies-list" class="tags-container"></div>
+                            </div>
+                        </div>
+
+                        <div class="preview-column-right">
+                            <!-- Experience -->
+                            <div class="preview-section" id="preview-experience-section" style="display:none;">
+                                <h3 class="section-title">Experience</h3>
+                                <div id="preview-experience-list" class="timeline"></div>
+                            </div>
+
+                            <!-- Education -->
+                            <div class="preview-section" id="preview-education-section" style="display:none;">
+                                <h3 class="section-title">Education</h3>
+                                <div id="preview-education-list" class="timeline"></div>
+                            </div>
+
+                            <!-- Projects -->
+                            <div class="preview-section" id="preview-projects-section" style="display:none;">
+                                <h3 class="section-title">Projects</h3>
+                                <div id="preview-projects-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                <section class="seo-rich-content card">
+                    <div class="seo-grid">
+                        <div>
+                            <h2 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-star"></i> Key Features</h2>
+                            <ul class="seo-feature-list">
+                                <li><i class="fa-solid fa-check"></i> Modern Professional Templates</li><li><i class="fa-solid fa-check"></i> Real-time PDF Preview</li><li><i class="fa-solid fa-check"></i> Custom Style Controls</li><li><i class="fa-solid fa-check"></i> No Registration</li><li><i class="fa-solid fa-check"></i> Privacy Focused</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i> 100% Private & Secure</h2>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">All processing happens locally in your browser. Your files are <strong>never uploaded</strong> to any server.</p>
+                        </div>
+                    </div>
+                    <div class="faq-section">
+                        <h2 style="color: var(--accent-color); margin-bottom: 20px;"><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+                        <div class="faq-grid">
+                            <div class="faq-card"><h3>Is this bio data maker free?</h3><p>Yes, it is 100% free with no hidden charges or premium plans.</p></div><div class="faq-card"><h3>Do I need to create an account?</h3><p>No, you can start creating and downloading your resume without any login.</p></div>
+                        </div>
+                    </div>
+                </section>
+</main>
+    </div>
+
+    <!-- Templates -->
+    <template id="skill-template">
+        <div class="dynamic-item complex-item">
+            <div class="form-row">
+                <input type="text" class="skill-name" placeholder="Skill (e.g. JavaScript)" required>
+                <div class="range-wrapper">
+                    <input type="range" class="skill-level" min="0" max="100" value="80">
+                </div>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    </template>
+    
+    <template id="experience-template">
+        <div class="dynamic-item complex-item">
+            <div class="item-header">
+                <h4>Role Details</h4>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="form-row">
+                <input type="text" class="exp-title" placeholder="Job Title" required>
+                <input type="text" class="exp-company" placeholder="Company Name" required>
+            </div>
+            <div class="form-row">
+                <input type="month" class="exp-start" required>
+                <div class="end-date-group">
+                    <input type="month" class="exp-end">
+                    <label class="checkbox-label"><input type="checkbox" class="exp-present"> Present</label>
+                </div>
+            </div>
+            <textarea class="exp-desc" rows="3" placeholder="Description (bullet points supported)"></textarea>
+        </div>
+    </template>
+
+    <template id="education-template">
+        <div class="dynamic-item complex-item">
+            <div class="item-header">
+                <h4>Degree Details</h4>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="form-row">
+                <input type="text" class="edu-degree" placeholder="Degree / Qualification" required>
+                <input type="text" class="edu-school" placeholder="Institution / School" required>
+            </div>
+            <div class="form-row">
+                <input type="number" class="edu-start" placeholder="Start Year" min="1900" max="2100" required>
+                <div class="end-date-group">
+                    <input type="number" class="edu-end" placeholder="End Year" min="1900" max="2100">
+                    <label class="checkbox-label"><input type="checkbox" class="edu-ongoing"> Ongoing</label>
+                </div>
+            </div>
+            <textarea class="edu-desc" rows="2" placeholder="Extra details (e.g. CGPA, Activities)"></textarea>
+        </div>
+    </template>
+
+    <template id="project-template">
+        <div class="dynamic-item complex-item">
+            <div class="item-header">
+                <h4>Project Details</h4>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="form-row">
+                <input type="text" class="proj-name" placeholder="Project Name" required>
+                <input type="url" class="proj-link" placeholder="Live Link (URL)">
+            </div>
+            <input type="text" class="proj-tech" placeholder="Technologies (e.g. React, Node.js)">
+            <textarea class="proj-desc" rows="2" placeholder="What did you build?"></textarea>
+        </div>
+    </template>
+
+    <template id="language-template">
+        <div class="dynamic-item complex-item">
+            <div class="form-row">
+                <input type="text" class="lang-name" placeholder="Language" required>
+                <select class="lang-level">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Fluent">Fluent</option>
+                    <option value="Native">Native</option>
+                </select>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    </template>
+
+    <template id="hobby-template">
+        <div class="dynamic-item complex-item">
+            <div class="form-row">
+                <input type="text" class="hobby-name" placeholder="Hobby (e.g. Reading, Traveling)" required>
+                <button class="btn-remove btn-icon" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // Basic nav toggle
+        const navBtn = document.getElementById('nav-dropdown-btn');
+        const navContent = document.getElementById('nav-dropdown-content');
+        if(navBtn && navContent) {
+            navBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navContent.classList.toggle('show');
+            });
+            window.addEventListener('click', () => {
+                navContent.classList.remove('show');
+            });
+        }
+    </script>
+    <script>
+// State
+const state = {
+    theme: localStorage.getItem('theme') || 'light',
+    accentColor: '#2563eb',
+    font: 'Inter',
+    layout: 'modern',
+};
+
+// DOM Elements
+const DOM = {
+    // Nav Dropdown
+    navDropdownBtn: document.getElementById('nav-dropdown-btn'),
+    navDropdownContent: document.getElementById('nav-dropdown-content'),
+    themeToggle: document.getElementById('theme-toggle'),
+    accentColor: document.getElementById('accent-color'),
+    fontSelect: document.getElementById('font-select'),
+    layoutSelect: document.getElementById('layout-select'),
+    fontStylesheet: document.getElementById('font-stylesheet'),
+    
+    // Identity
+    fullName: document.getElementById('full-name'),
+    headline: document.getElementById('headline'),
+    summary: document.getElementById('summary'),
+    summaryCount: document.getElementById('summary-count'),
+    profilePhoto: document.getElementById('profile-photo'),
+    btnRemovePhoto: document.getElementById('btn-remove-photo'),
+
+    // Contact
+    phone: document.getElementById('phone'),
+    email: document.getElementById('email'),
+    location: document.getElementById('location'),
+    website: document.getElementById('website'),
+    linkedin: document.getElementById('linkedin'),
+    github: document.getElementById('github'),
+
+    // Dynamic Containers
+    skillsContainer: document.getElementById('skills-container'),
+    experienceContainer: document.getElementById('experience-container'),
+    educationContainer: document.getElementById('education-container'),
+    projectsContainer: document.getElementById('projects-container'),
+    languagesContainer: document.getElementById('languages-container'),
+    hobbiesContainer: document.getElementById('hobbies-container'),
+
+    // Add Buttons
+    btnAddSkill: document.getElementById('btn-add-skill'),
+    btnAddExperience: document.getElementById('btn-add-experience'),
+    btnAddEducation: document.getElementById('btn-add-education'),
+    btnAddProject: document.getElementById('btn-add-project'),
+    btnAddLanguage: document.getElementById('btn-add-language'),
+    btnAddHobby: document.getElementById('btn-add-hobby'),
+
+    // Personal
+    togglePersonal: document.getElementById('toggle-personal'),
+    personalContainer: document.getElementById('personal-details-container'),
+    dob: document.getElementById('dob'),
+    gender: document.getElementById('gender'),
+    maritalStatus: document.getElementById('marital-status'),
+    nationality: document.getElementById('nationality'),
+    height: document.getElementById('height'),
+    weight: document.getElementById('weight'),
+    religion: document.getElementById('religion'),
+    caste: document.getElementById('caste'),
+    motherTongue: document.getElementById('mother-tongue'),
+    bloodGroup: document.getElementById('blood-group'),
+    permanentAddress: document.getElementById('permanent-address'),
+    fatherName: document.getElementById('father-name'),
+    fatherOcc: document.getElementById('father-occ'),
+    motherName: document.getElementById('mother-name'),
+    motherOcc: document.getElementById('mother-occ'),
+    siblings: document.getElementById('siblings'),
+
+    // Buttons
+    btnSample: document.getElementById('btn-sample'),
+    btnReset: document.getElementById('btn-reset'),
+    btnPrint: document.getElementById('btn-print'),
+    btnDownload: document.getElementById('btn-download'),
+
+    // Preview
+    pdfContent: document.getElementById('pdf-content'),
+    previewName: document.getElementById('preview-name'),
+    previewRole: document.getElementById('preview-role'),
+    previewContacts: document.getElementById('preview-contacts'),
+    previewPhotoContainer: document.getElementById('preview-photo-container'),
+    previewPhoto: document.getElementById('preview-photo'),
+    previewSummary: document.getElementById('preview-summary'),
+    previewSummarySection: document.getElementById('preview-summary-section'),
+    previewSkillsList: document.getElementById('preview-skills-list'),
+    previewSkillsSection: document.getElementById('preview-skills-section'),
+    previewExperienceList: document.getElementById('preview-experience-list'),
+    previewExperienceSection: document.getElementById('preview-experience-section'),
+    previewEducationList: document.getElementById('preview-education-list'),
+    previewEducationSection: document.getElementById('preview-education-section'),
+    previewProjectsList: document.getElementById('preview-projects-list'),
+    previewProjectsSection: document.getElementById('preview-projects-section'),
+    previewLanguagesList: document.getElementById('preview-languages-list'),
+    previewLanguagesSection: document.getElementById('preview-languages-section'),
+    previewHobbiesList: document.getElementById('preview-hobbies-list'),
+    previewHobbiesSection: document.getElementById('preview-hobbies-section'),
+    previewPersonalSection: document.getElementById('preview-personal-section'),
+    previewPersonalTableBody: document.querySelector('#preview-personal-table tbody')
+};
+
+// Initialize
+function init() {
+    setupTheme();
+    setupListeners();
+    updatePreview();
+}
+
+function setupTheme() {
+    DOM.themeToggle.value = state.theme;
+    applyTheme(state.theme);
+    DOM.accentColor.value = state.accentColor;
+    applyAccentColor(state.accentColor);
+}
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('theme', theme);
+}
+
+function applyAccentColor(color) {
+    document.documentElement.style.setProperty('--accent-color', color);
+    state.accentColor = color;
+}
+
+function applyFont(font) {
+    let fontName = font.replace(/ /g, '+');
+    DOM.fontStylesheet.href = `https://fonts.googleapis.com/css2?family=${fontName}:wght@400;500;600;700&display=swap`;
+    document.documentElement.style.setProperty('--font-family', `'${font}', sans-serif`);
+    if(font === 'Merriweather' || font === 'Playfair Display') {
+        document.documentElement.style.setProperty('--font-family', `'${font}', serif`);
+    }
+}
+
+function applyLayout(layout) {
+    document.body.classList.remove(
+        'layout-modern', 'layout-classic', 'layout-professional', 
+        'layout-minimalist', 'layout-elegant', 'layout-creative', 
+        'layout-compact', 'layout-bold', 'layout-twotone', 'layout-timeline'
+    );
+    document.body.classList.add(`layout-${layout}`);
+}
+
+function setupListeners() {
+    // Customization
+    DOM.themeToggle.addEventListener('change', (e) => applyTheme(e.target.value));
+    DOM.accentColor.addEventListener('input', (e) => applyAccentColor(e.target.value));
+    DOM.fontSelect.addEventListener('change', (e) => applyFont(e.target.value));
+    DOM.layoutSelect.addEventListener('change', (e) => applyLayout(e.target.value));
+
+    // Input Listeners
+    const inputs = [
+        DOM.fullName, DOM.headline, DOM.summary, DOM.phone, DOM.email,
+        DOM.location, DOM.website, DOM.linkedin, DOM.github,
+        DOM.dob, DOM.gender, DOM.maritalStatus, DOM.nationality,
+        DOM.height, DOM.weight, DOM.religion, DOM.caste, DOM.motherTongue,
+        DOM.bloodGroup, DOM.permanentAddress, DOM.fatherName, DOM.fatherOcc,
+        DOM.motherName, DOM.motherOcc, DOM.siblings
+    ];
+    inputs.forEach(input => {
+        if(input) input.addEventListener('input', updatePreview);
+    });
+
+    DOM.summary.addEventListener('input', () => {
+        DOM.summaryCount.textContent = `${DOM.summary.value.length}/600`;
+        updatePreview();
+    });
+
+    // Image Upload
+    DOM.profilePhoto.addEventListener('change', handleImageUpload);
+    DOM.btnRemovePhoto.addEventListener('click', handleRemoveImage);
+
+    // Dynamic Items Add
+    DOM.btnAddSkill.addEventListener('click', () => addDynamicItem('skill'));
+    DOM.btnAddExperience.addEventListener('click', () => addDynamicItem('experience'));
+    DOM.btnAddEducation.addEventListener('click', () => addDynamicItem('education'));
+    DOM.btnAddProject.addEventListener('click', () => addDynamicItem('project'));
+    DOM.btnAddLanguage.addEventListener('click', () => addDynamicItem('language'));
+    DOM.btnAddHobby.addEventListener('click', () => addDynamicItem('hobby'));
+
+    // Event delegation for dynamic lists
+    [DOM.skillsContainer, DOM.experienceContainer, DOM.educationContainer,
+     DOM.projectsContainer, DOM.languagesContainer, DOM.hobbiesContainer].forEach(container => {
+        container.addEventListener('input', updatePreview);
+        container.addEventListener('change', updatePreview); 
+        container.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-remove')) {
+                e.target.closest('.dynamic-item').remove();
+                updatePreview();
+            }
+        });
+    });
+
+    // Disable End Dates if Present/Ongoing checked
+    DOM.experienceContainer.addEventListener('change', (e) => {
+        if (e.target.classList.contains('exp-present')) {
+            const endDate = e.target.closest('.end-date-group').querySelector('.exp-end');
+            endDate.disabled = e.target.checked;
+            if(e.target.checked) endDate.value = '';
+            updatePreview();
+        }
+    });
+    DOM.educationContainer.addEventListener('change', (e) => {
+        if (e.target.classList.contains('edu-ongoing')) {
+            const endDate = e.target.closest('.end-date-group').querySelector('.edu-end');
+            endDate.disabled = e.target.checked;
+            if(e.target.checked) endDate.value = '';
+            updatePreview();
+        }
+    });
+
+    // Personal Toggle
+    DOM.togglePersonal.addEventListener('change', (e) => {
+        DOM.personalContainer.style.display = e.target.checked ? 'block' : 'none';
+        updatePreview();
+    });
+
+    // Utilities
+    DOM.btnPrint.addEventListener('click', () => window.print());
+    
+    // Download PDF Using html2pdf.js
+    DOM.btnDownload.addEventListener('click', () => {
+        const originalBg = document.body.style.backgroundColor;
+        const originalMode = document.body.classList.contains('dark-mode');
+        
+        // Force light mode for PDF rendering so it looks like a paper document
+        if(originalMode) {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+        }
+
+        const element = DOM.pdfContent;
+        // Options for html2pdf
+        const opt = {
+            margin:       0,
+            filename:     (DOM.fullName.value || 'Resume').replace(/\s+/g, '_') + '_BioData.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, logging: false },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Temporarily modify styles for better PDF capture if needed
+        element.style.boxShadow = 'none';
+        
+        // Change button state
+        const btnInner = DOM.btnDownload.innerHTML;
+        DOM.btnDownload.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+        DOM.btnDownload.disabled = true;
+
+        html2pdf().set(opt).from(element).save().then(() => {
+            // Restore original styles
+            element.style.boxShadow = '';
+            if(originalMode) {
+                document.body.classList.add('dark-mode');
+                document.body.classList.remove('light-mode');
+            }
+            DOM.btnDownload.innerHTML = btnInner;
+            DOM.btnDownload.disabled = false;
+        });
+    });
+
+    DOM.btnReset.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+            document.querySelectorAll('input:not([type="color"]):not([type="checkbox"]), textarea, select').forEach(el => el.value = '');
+            document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+            handleRemoveImage();
+            [DOM.skillsContainer, DOM.experienceContainer, DOM.educationContainer,
+             DOM.projectsContainer, DOM.languagesContainer, DOM.hobbiesContainer].forEach(c => c.innerHTML = '');
+            DOM.summaryCount.textContent = '0/600';
+            DOM.personalContainer.style.display = 'none';
+            updatePreview();
+        }
+    });
+    
+    // Toggle Nav Dropdown
+    if (DOM.navDropdownBtn && DOM.navDropdownContent) {
+        DOM.navDropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            DOM.navDropdownContent.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', () => {
+            if (DOM.navDropdownContent.classList.contains('show')) {
+                DOM.navDropdownContent.classList.remove('show');
+            }
+        });
+    }
+
+    DOM.btnSample.addEventListener('click', loadSampleData);
+}
+
+function handleImageUpload(e) {
+    const file = e.target.files[0];
+    if (file) {
+        if (file.size > 5 * 1024 * 1024) {
+            alert('File is too large. Max size is 5MB.');
+            e.target.value = '';
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            DOM.previewPhoto.src = event.target.result;
+            DOM.previewPhoto.style.display = 'block';
+            DOM.previewPhotoContainer.style.display = 'block';
+            DOM.btnRemovePhoto.style.display = 'inline-block';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function handleRemoveImage() {
+    DOM.profilePhoto.value = '';
+    DOM.previewPhoto.src = '';
+    DOM.previewPhoto.style.display = 'none';
+    DOM.previewPhotoContainer.style.display = 'none';
+    DOM.btnRemovePhoto.style.display = 'none';
+}
+
+function addDynamicItem(type) {
+    const template = document.getElementById(`${type}-template`);
+    const clone = template.content.cloneNode(true);
+    const containerMap = {
+        'skill': 'skillsContainer',
+        'experience': 'experienceContainer',
+        'education': 'educationContainer',
+        'project': 'projectsContainer',
+        'language': 'languagesContainer',
+        'hobby': 'hobbiesContainer'
+    };
+    DOM[containerMap[type]].appendChild(clone);
+}
+
+function addInitialDynamicItems() {
+    addDynamicItem('skill');
+    addDynamicItem('experience');
+    addDynamicItem('education');
+}
+
+function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    }[tag] || tag));
+}
+
+function formatDates(start, end, presentLabel) {
+    const formatMonth = (val) => {
+        if(!val) return '';
+        const d = new Date(val);
+        if(isNaN(d)) return val;
+        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+    const s = formatMonth(start);
+    const e = presentLabel ? 'Present' : formatMonth(end);
+    if (s && e) return `${s} - ${e}`;
+    if (s) return s;
+    if (e) return `Ends: ${e}`;
+    return '';
+}
+
+function updatePreview() {
+    requestAnimationFrame(() => {
+        // Identity
+        DOM.previewName.textContent = DOM.fullName.value || 'Your Name';
+        DOM.previewRole.textContent = DOM.headline.value;
+        DOM.previewRole.style.display = DOM.headline.value ? 'block' : 'none';
+        
+        DOM.previewSummary.textContent = DOM.summary.value;
+        DOM.previewSummarySection.style.display = DOM.summary.value ? 'block' : 'none';
+
+        // Contacts with FontAwesome Icons
+        DOM.previewContacts.innerHTML = '';
+        const contacts = [
+            { id: 'phone', icon: '<i class="fa-solid fa-phone"></i>' },
+            { id: 'email', icon: '<i class="fa-solid fa-envelope"></i>' },
+            { id: 'location', icon: '<i class="fa-solid fa-location-dot"></i>' },
+            { id: 'website', icon: '<i class="fa-solid fa-globe"></i>' },
+            { id: 'linkedin', icon: '<i class="fa-brands fa-linkedin"></i>' },
+            { id: 'github', icon: '<i class="fa-brands fa-github"></i>' }
+        ];
+        contacts.forEach(c => {
+            const val = DOM[c.id].value;
+            if (val) {
+                const el = document.createElement('div');
+                el.className = 'contact-pill';
+                if (['email', 'website', 'linkedin', 'github'].includes(c.id)) {
+                    let href = val;
+                    if(c.id === 'email') href = `mailto:${val}`;
+                    else if(!val.startsWith('http')) href = `https://${val}`;
+                    el.innerHTML = `${c.icon} <a href="${escapeHTML(href)}" target="_blank">${escapeHTML(val)}</a>`;
+                } else {
+                    el.innerHTML = `${c.icon} <span>${escapeHTML(val)}</span>`;
+                }
+                DOM.previewContacts.appendChild(el);
+            }
+        });
+
+        // Skills
+        const skills = Array.from(DOM.skillsContainer.children).map(item => ({
+            name: item.querySelector('.skill-name').value,
+            level: item.querySelector('.skill-level').value
+        })).filter(s => s.name);
+        
+        DOM.previewSkillsList.innerHTML = skills.map(s => `
+            <div class="skill-item-preview">
+                <div class="skill-label-preview"><span>${escapeHTML(s.name)}</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: ${s.level}%"></div></div>
+            </div>
+        `).join('');
+        DOM.previewSkillsSection.style.display = skills.length ? 'block' : 'none';
+
+        // Experience
+        const experiences = Array.from(DOM.experienceContainer.children).map(item => ({
+            title: item.querySelector('.exp-title').value,
+            company: item.querySelector('.exp-company').value,
+            start: item.querySelector('.exp-start').value,
+            end: item.querySelector('.exp-end').value,
+            present: item.querySelector('.exp-present').checked,
+            desc: item.querySelector('.exp-desc').value
+        })).filter(e => e.title || e.company);
+
+        DOM.previewExperienceList.innerHTML = experiences.map(e => `
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">${escapeHTML(e.title)}</div>
+                    <div class="timeline-date">${escapeHTML(formatDates(e.start, e.end, e.present))}</div>
+                </div>
+                <div class="timeline-subtitle">${escapeHTML(e.company)}</div>
+                <div class="timeline-desc">${escapeHTML(e.desc)}</div>
+            </div>
+        `).join('');
+        DOM.previewExperienceSection.style.display = experiences.length ? 'block' : 'none';
+
+        // Education
+        const educations = Array.from(DOM.educationContainer.children).map(item => ({
+            degree: item.querySelector('.edu-degree').value,
+            school: item.querySelector('.edu-school').value,
+            start: item.querySelector('.edu-start').value,
+            end: item.querySelector('.edu-end').value,
+            ongoing: item.querySelector('.edu-ongoing').checked,
+            desc: item.querySelector('.edu-desc').value
+        })).filter(e => e.degree || e.school);
+
+        DOM.previewEducationList.innerHTML = educations.map(e => `
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">${escapeHTML(e.degree)}</div>
+                    <div class="timeline-date">${escapeHTML(formatDates(e.start, e.end, e.ongoing))}</div>
+                </div>
+                <div class="timeline-subtitle">${escapeHTML(e.school)}</div>
+                <div class="timeline-desc">${escapeHTML(e.desc)}</div>
+            </div>
+        `).join('');
+        DOM.previewEducationSection.style.display = educations.length ? 'block' : 'none';
+
+        // Projects
+        const projects = Array.from(DOM.projectsContainer.children).map(item => ({
+            name: item.querySelector('.proj-name').value,
+            link: item.querySelector('.proj-link').value,
+            tech: item.querySelector('.proj-tech').value,
+            desc: item.querySelector('.proj-desc').value
+        })).filter(p => p.name);
+
+        DOM.previewProjectsList.innerHTML = projects.map(p => {
+            let linkHtml = p.name;
+            if(p.link) {
+                let href = p.link.startsWith('http') ? p.link : `https://${p.link}`;
+                linkHtml = `<a href="${escapeHTML(href)}" target="_blank" style="color:var(--accent-color);text-decoration:none;"><i class="fa-solid fa-link" style="font-size:0.8rem"></i> ${escapeHTML(p.name)}</a>`;
+            }
+            return `
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">${linkHtml}</div>
+                </div>
+                ${p.tech ? `<div class="timeline-subtitle" style="font-weight:500;font-size:0.85rem">Tech: ${escapeHTML(p.tech)}</div>` : ''}
+                <div class="timeline-desc">${escapeHTML(p.desc)}</div>
+            </div>
+            `;
+        }).join('');
+        DOM.previewProjectsSection.style.display = projects.length ? 'block' : 'none';
+
+        // Languages
+        const languages = Array.from(DOM.languagesContainer.children).map(item => ({
+            name: item.querySelector('.lang-name').value,
+            level: item.querySelector('.lang-level').value
+        })).filter(l => l.name);
+
+        DOM.previewLanguagesList.innerHTML = languages.map(l => `
+            <div class="tag-chip">${escapeHTML(l.name)} <span style="opacity:0.7;font-size:0.75rem;">(${escapeHTML(l.level)})</span></div>
+        `).join('');
+        DOM.previewLanguagesSection.style.display = languages.length ? 'block' : 'none';
+
+        // Hobbies
+        const hobbies = Array.from(DOM.hobbiesContainer.children).map(item => ({
+            name: item.querySelector('.hobby-name').value
+        })).filter(h => h.name);
+
+        DOM.previewHobbiesList.innerHTML = hobbies.map(h => `
+            <div class="tag-chip">${escapeHTML(h.name)}</div>
+        `).join('');
+        DOM.previewHobbiesSection.style.display = hobbies.length ? 'block' : 'none';
+
+        // Personal Details (Matrimonial)
+        if (DOM.togglePersonal.checked) {
+            const pFields = [
+                { label: 'Date of Birth', val: DOM.dob.value },
+                { label: 'Gender', val: DOM.gender.value },
+                { label: 'Marital Status', val: DOM.maritalStatus.value },
+                { label: 'Nationality', val: DOM.nationality.value },
+                { label: 'Height', val: DOM.height.value },
+                { label: 'Weight', val: DOM.weight.value ? DOM.weight.value + ' kg' : '' },
+                { label: 'Religion', val: DOM.religion.value },
+                { label: 'Caste', val: DOM.caste.value },
+                { label: 'Mother Tongue', val: DOM.motherTongue.value },
+                { label: 'Blood Group', val: DOM.bloodGroup.value },
+                { label: 'Permanent Address', val: DOM.permanentAddress.value },
+                { label: "Father's Name", val: DOM.fatherName.value },
+                { label: "Father's Occupation", val: DOM.fatherOcc.value },
+                { label: "Mother's Name", val: DOM.motherName.value },
+                { label: "Mother's Occupation", val: DOM.motherOcc.value },
+                { label: 'Siblings', val: DOM.siblings.value }
+            ].filter(f => f.val);
+
+            DOM.previewPersonalTableBody.innerHTML = pFields.map(f => `
+                <tr><td>${escapeHTML(f.label)}</td><td>${escapeHTML(f.val)}</td></tr>
+            `).join('');
+            DOM.previewPersonalSection.style.display = pFields.length ? 'block' : 'none';
+        } else {
+            DOM.previewPersonalSection.style.display = 'none';
+        }
+    });
+}
+
+function loadSampleData() {
+    DOM.fullName.value = "Rahul Sharma";
+    DOM.headline.value = "Senior Frontend Developer";
+    DOM.summary.value = "Creative and detail-oriented Frontend Developer with 4+ years of experience building highly responsive and scalable web applications. Proficient in modern JavaScript frameworks and passionate about UI/UX design and web performance optimization.";
+    DOM.phone.value = "+91 98765 43210";
+    DOM.email.value = "rahul.sharma@example.com";
+    DOM.location.value = "Bangalore, India";
+    DOM.linkedin.value = "linkedin.com/in/rahulsharma";
+    DOM.github.value = "github.com/rahulsharma";
+
+    DOM.skillsContainer.innerHTML = '';
+    const skills = [
+        {name: "JavaScript (ES6+)", level: 95},
+        {name: "React.js & Redux", level: 90},
+        {name: "TypeScript", level: 80},
+        {name: "Tailwind CSS & SASS", level: 85}
+    ];
+    skills.forEach(s => {
+        addDynamicItem('skill');
+        const last = DOM.skillsContainer.lastElementChild;
+        last.querySelector('.skill-name').value = s.name;
+        last.querySelector('.skill-level').value = s.level;
+    });
+
+    DOM.experienceContainer.innerHTML = '';
+    addDynamicItem('experience');
+    let exp = DOM.experienceContainer.lastElementChild;
+    exp.querySelector('.exp-title').value = "Frontend Engineer";
+    exp.querySelector('.exp-company').value = "Tech Solutions Ltd.";
+    exp.querySelector('.exp-start').value = "2021-03";
+    exp.querySelector('.exp-present').checked = true;
+    exp.querySelector('.exp-desc').value = "• Lead the development of the core customer dashboard using React.\n• Improved initial page load time by 40% through code splitting and lazy loading.\n• Mentored 3 junior developers and conducted weekly code reviews.";
+    
+    addDynamicItem('experience');
+    exp = DOM.experienceContainer.lastElementChild;
+    exp.querySelector('.exp-title').value = "Web Developer Intern";
+    exp.querySelector('.exp-company').value = "InnovateX Inc.";
+    exp.querySelector('.exp-start').value = "2020-06";
+    exp.querySelector('.exp-end').value = "2020-12";
+    exp.querySelector('.exp-desc').value = "• Assisted in migrating legacy jQuery codebase to vanilla JS.\n• Developed internal tools used by the HR department.";
+
+    DOM.educationContainer.innerHTML = '';
+    addDynamicItem('education');
+    const edu = DOM.educationContainer.lastElementChild;
+    edu.querySelector('.edu-degree').value = "B.Tech in Computer Science";
+    edu.querySelector('.edu-school').value = "National Institute of Technology";
+    edu.querySelector('.edu-start').value = "2016";
+    edu.querySelector('.edu-end').value = "2020";
+    edu.querySelector('.edu-desc').value = "CGPA: 8.5/10. Active member of the Coding Club.";
+
+    DOM.projectsContainer.innerHTML = '';
+    addDynamicItem('project');
+    const proj = DOM.projectsContainer.lastElementChild;
+    proj.querySelector('.proj-name').value = "E-commerce Analytics Dashboard";
+    proj.querySelector('.proj-link').value = "https://demo-dashboard.com";
+    proj.querySelector('.proj-tech').value = "React, Chart.js, Firebase";
+    proj.querySelector('.proj-desc').value = "A real-time admin dashboard for merchants to track sales, inventory, and user metrics.";
+
+    DOM.languagesContainer.innerHTML = '';
+    ['English', 'Hindi', 'Kannada'].forEach((l, i) => {
+        addDynamicItem('language');
+        const last = DOM.languagesContainer.lastElementChild;
+        last.querySelector('.lang-name').value = l;
+        last.querySelector('.lang-level').value = i === 0 ? 'Fluent' : (i === 1 ? 'Native' : 'Intermediate');
+    });
+
+    DOM.hobbiesContainer.innerHTML = '';
+    ['Photography', 'Trekking', 'Reading Sci-Fi'].forEach(h => {
+        addDynamicItem('hobby');
+        DOM.hobbiesContainer.lastElementChild.querySelector('.hobby-name').value = h;
+    });
+
+    // Optionally fill personal info
+    DOM.togglePersonal.checked = true;
+    DOM.personalContainer.style.display = 'block';
+    DOM.dob.value = "1998-08-20";
+    DOM.gender.value = "Male";
+    DOM.maritalStatus.value = "Single";
+    DOM.nationality.value = "Indian";
+    DOM.height.value = `5'11"`;
+    DOM.weight.value = "76";
+    DOM.religion.value = "Hindu";
+    DOM.caste.value = "Brahmin";
+    DOM.motherTongue.value = "Hindi";
+    DOM.bloodGroup.value = "B+";
+    DOM.permanentAddress.value = "45, Green Park Layout, Koramangala, Bangalore, Karnataka - 560034";
+    DOM.fatherName.value = "Suresh Sharma";
+    DOM.fatherOcc.value = "Retired Banker";
+    DOM.motherName.value = "Anita Sharma";
+    DOM.motherOcc.value = "Homemaker";
+    DOM.siblings.value = "1 elder sister (Married, Software Engineer)";
+
+    updatePreview();
+}
+
+// Start
+init();
+</script>
+    </div>
+
+        <!-- Global Professional Footer -->
+        <footer class="professional-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Brand Section -->
+                    <div class="footer-brand-section">
+                        <div class="footer-logo">
+                            <i class="fa-solid fa-layer-group"></i>
+                            <span>Multi-Tool Suite</span>
+                        </div>
+                        <p class="footer-tagline">Empowering your digital workflow with fast, private, and professional browser-based utilities.</p>
+                        <div class="footer-social-links">
+                            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Products: PDF -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">PDF Solutions</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="pdf-merge.html">PDF Merger</a></li>
+                            <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+                            <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                            <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                            <li><a href="copy-pdf-text.html">Extract PDF Text</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Products: Images -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">Image Tools</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="image-compressor.html">Compress Images</a></li>
+                            <li><a href="background-remover.html">BG Remover</a></li>
+                            <li><a href="passport-size-with-name.html">Passport Photo</a></li>
+                            <li><a href="image-resize.html">Resize Images</a></li>
+                            <li><a href="ocr-tool.html">OCR (Image to Text)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company & Legal -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">Company</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Support</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="disclaimer.html">Usage Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom-row">
+                    <div class="footer-copyright">
+                        &copy; 2026 Multi-Tool Suite. Built for privacy.
+                    </div>
+                    <div class="footer-status">
+                        <span class="status-indicator"></span>
+                        All Systems Operational
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>

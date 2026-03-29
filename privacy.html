@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Multi-Tool Suite</title>
+    <meta name="description" content="Our privacy policy explains how we protect your data. We process everything locally in your browser and never upload your files to our servers.">
+    <meta name="keywords" content="privacy policy, data security, browser-side processing, secure tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://parmartools.netlify.app/privacy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parmartools.netlify.app/privacy.html">
+    <meta property="og:title" content="Privacy Policy - Multi-Tool Suite">
+    <meta property="og:description" content="Our privacy policy explains how we protect your data. We process everything locally in your browser and never upload your files to our servers.">
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "WebPage","name": "Privacy Policy","description": "Our privacy policy explains how we protect your data. We process everything locally in your browser and never upload your files to our servers.","url": "https://parmartools.netlify.app/privacy.html","offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="font-stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/* Custom Properties & Modern Palette */
+:root {
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Light Mode */
+    --bg-color: #f8fafc;
+    --panel-bg: #ffffff;
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --preview-bg: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --border-radius: 12px;
+}
+
+body.dark-mode {
+    --bg-color: #020617;
+    --panel-bg: #0f172a;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #1e293b;
+    --input-bg: #020617;
+    --input-border: #334155;
+    --preview-bg: #0f172a;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Landing Page Specific Styles */
+.landing-header {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 5%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .landing-header {
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-color);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.8px;
+}
+
+.logo-link i { 
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.2));
+}
+
+.hero-gradient {
+    padding: 100px 20px;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent),
+                radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.05), transparent);
+}
+
+.hero-content { max-width: 800px; margin: 0 auto; }
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; }
+
+.search-container { max-width: 600px; margin: 0 auto; position: relative; }
+.search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.2rem; }
+
+.main-search {
+    width: 100%;
+    padding: 18px 20px 18px 55px !important;
+    font-size: 1.1rem !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
+    border: 2px solid var(--border-color) !important;
+}
+
+.section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+.category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+.category-header h2 { font-size: 1.8rem; font-weight: 800; }
+.category-header .line { flex: 1; height: 2px; background: var(--border-color); }
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.tool-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tool-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--accent-color);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.professional-footer {
+    background: var(--panel-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 80px 20px 40px;
+}
+
+.footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+
+/* Global Navigation for Tools */
+.global-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    height: 60px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1000;
+}
+
+body.dark-mode .global-nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-brand {
+    font-weight: 800;
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.2px;
+}
+
+.nav-brand:hover {
+    border-color: var(--accent-color);
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .nav-brand:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: var(--spacing-xl);
+    background-color: var(--panel-bg);
+    min-width: 280px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 12px;
+    z-index: 1001;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: navAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes navAppear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-dropdown-content.show { display: block; }
+
+.nav-dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.nav-dropdown-content a:hover {
+    background: var(--bg-color);
+    color: var(--accent-color);
+    padding-left: 20px;
+}
+
+.nav-dropdown-content a.active { 
+    background: rgba(37, 99, 235, 0.08); 
+    color: var(--accent-color); 
+    font-weight: 700; 
+}
+
+.nav-current-tool {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.3px;
+    opacity: 0.9;
+}
+
+/* App Layout for Tools */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 320px;
+    background-color: var(--panel-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.right-panel {
+    flex: 1;
+    background-color: var(--bg-color);
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+}
+
+.right-panel-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Tool Components */
+.card {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+}
+
+.panel-header { padding: var(--spacing-lg); border-bottom: 1px solid var(--border-color); margin-bottom: var(--spacing-md); }
+.panel-header h1 { font-size: 1.4rem; font-weight: 800; }
+
+.btn { padding: 0.6rem 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
+.btn-primary { background: var(--accent-color); color: white; }
+.btn-secondary { background: var(--bg-color); color: var(--text-color); border: 1px solid var(--border-color); }
+
+/* Form Elements */
+.form-group { margin-bottom: var(--spacing-md); }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; }
+input[type="text"], input[type="number"], select, input[type="range"] { 
+    width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-color);
+}
+
+/* SEO Section */
+.seo-rich-content { margin-top: 40px; }
+.seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.faq-card { background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; }
+
+.nav-separator { display: block; border-top: 1px solid var(--border-color); margin: 8px 0; }
+
+/* FIX: Ensure left-panel is visible on mobile */
+@media (max-width: 1024px) {
+    body { overflow: auto; }
+    .app-wrapper { height: auto; }
+    .app-container { flex-direction: column; height: auto; overflow: visible; }
+    .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); height: auto; overflow: visible; }
+    .right-panel { width: 100%; height: auto; overflow: visible; padding: var(--spacing-md); }
+}
+
+@media (max-width: 600px) {
+    .right-panel { padding: var(--spacing-sm); }
+}
+
+/* Professional Footer Styles */
+.professional-footer {
+    background-color: #020617; /* Premium Deep Black/Navy */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 100px 0 40px;
+    margin-top: auto;
+    color: #f8fafc;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.footer-logo i {
+    color: var(--accent-color);
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.3));
+}
+
+.footer-tagline {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 360px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-links a {
+    color: #94a3b8;
+    font-size: 1.3rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.footer-social-links a:hover {
+    color: #ffffff;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-5px) rotate(8deg);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.footer-heading {
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.9;
+}
+
+.footer-links-list {
+    list-style: none;
+}
+
+.footer-links-list li {
+    margin-bottom: 18px;
+}
+
+.footer-links-list a {
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links-list a:hover {
+    color: #ffffff;
+    transform: translateX(8px);
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.1), rgba(255,255,255,0));
+    margin-bottom: 40px;
+}
+
+.footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-copyright {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 50%;
+    background-color: inherit;
+    animation: status-pulse 2s infinite;
+}
+
+@keyframes status-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand-section {
+        grid-column: span 2;
+        margin-bottom: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .professional-footer {
+        padding: 80px 0 40px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .footer-brand-section {
+        grid-column: span 1;
+    }
+    .footer-logo { justify-content: center; }
+    .footer-bottom-row {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+<body class="light-mode theme-inter layout-modern">
+    <div class="app-wrapper">
+        <!-- Global Navigation -->
+                        <nav class="global-nav">
+            <div class="nav-dropdown">
+                <button class="nav-brand" id="nav-dropdown-btn">
+                    <i class="fa-solid fa-layer-group"></i> Multi-Tool Suite <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                </button>
+                <div class="nav-dropdown-content" id="nav-dropdown-content">
+                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="bio-data-maker.html"><i class="fa-solid fa-file-signature"></i> Bio Data Maker</a>
+                    <a href="image-compressor.html"><i class="fa-solid fa-compress"></i> Image Compressor</a>
+                    <a href="image-resize.html"><i class="fa-solid fa-expand"></i> Image Resize</a>
+                    <a href="passport-photo-crop.html"><i class="fa-solid fa-crop-simple"></i> Passport Photo Crop</a>
+                    <a href="passport-size-with-name.html"><i class="fa-solid fa-id-badge"></i> Passport Photo with Name</a>
+                    <a href="jpg-to-pdf.html"><i class="fa-solid fa-file-pdf"></i> JPG → PDF</a>
+                    <a href="pdf-to-jpg.html"><i class="fa-solid fa-image"></i> PDF to JPG</a>
+                    <a href="image-merge.html"><i class="fa-solid fa-regular fa-object-group"></i> Image Merge</a>
+                    <a href="pdf-merge.html"><i class="fa-solid fa-solid fa-object-group"></i> PDF Merge</a>
+                    <a href="ocr-tool.html"><i class="fa-solid fa-solid fa-file-lines"></i> OCR Tool</a>
+                    <a href="pdf-compressor.html"><i class="fa-solid fa-solid fa-file-zipper"></i> PDF Compressor</a>
+                    <a href="copy-pdf-text.html"><i class="fa-solid fa-solid fa-copy"></i> Copy PDF Text</a>
+                    <a href="add-white-bg.html"><i class="fa-solid fa-solid fa-square"></i> Add White BG</a>
+                    <a href="background-remover.html"><i class="fa-solid fa-solid fa-eraser"></i> Background Remover</a>
+                </div>
+            </div>
+            <div class="nav-current-tool">
+                <span>privacy</span>
+            </div>
+        </nav>
+        <div class="app-container">
+            <aside class="left-panel">
+                <header class="panel-header">
+                    <div class="logo-title">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <h1>Privacy</h1>
+                    </div>
+                    <p class="subtitle">Your data, your control.</p>
+                </header>
+                <div class="panel-content" style="padding: var(--spacing-lg);">
+                    <div class="card">
+                        <h3 style="margin-bottom: 10px; color: var(--accent-color);">100% Client-Side</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">We use JavaScript to process files locally. Your data never reaches our servers.</p>
+                    </div>
+                </div>
+                        
+                    
+        </aside>
+
+            <main class="right-panel">
+                <div class="right-panel-content" style="max-width: 800px; text-align: left;">
+                    <section class="card">
+                        <h2 style="margin-bottom: var(--spacing-md); color: var(--accent-color);">Privacy Policy</h2>
+                        <p style="margin-bottom: var(--spacing-md);">At Multi-Tool Suite, we take your privacy seriously. This policy explains how we handle your data when you use our web-based tools.</p>
+                        
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">1. Information We Do Not Collect</h3>
+                        <p style="margin-bottom: var(--spacing-md);">Unlike many other online converters, we do NOT upload your files to any server. All processing (PDF merging, image resizing, background removal, etc.) happens entirely on your own device using your browser's processing power.</p>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">2. Local Storage</h3>
+                        <p style="margin-bottom: var(--spacing-md);">We may use your browser's local storage to save your theme preferences (Light/Dark mode) or temporary tool settings. This data is never sent to us and stays on your machine.</p>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">3. Cookies</h3>
+                        <p style="margin-bottom: var(--spacing-md);">We do not use tracking cookies. We may use basic session cookies required for the site to function correctly.</p>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">4. External Links</h3>
+                        <p style="margin-bottom: var(--spacing-md);">Our site may contain links to external libraries (CDNs) like Cloudflare or Google Fonts. These services have their own privacy policies.</p>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">5. Changes to This Policy</h3>
+                        <p style="margin-bottom: var(--spacing-md);">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <!-- Global Professional Footer -->
+        <footer class="professional-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Brand Section -->
+                    <div class="footer-brand-section">
+                        <div class="footer-logo">
+                            <i class="fa-solid fa-layer-group"></i>
+                            <span>Multi-Tool Suite</span>
+                        </div>
+                        <p class="footer-tagline">Empowering your digital workflow with fast, private, and professional browser-based utilities.</p>
+                        <div class="footer-social-links">
+                            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Products: PDF -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">PDF Solutions</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="pdf-merge.html">PDF Merger</a></li>
+                            <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+                            <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                            <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                            <li><a href="copy-pdf-text.html">Extract PDF Text</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Products: Images -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">Image Tools</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="image-compressor.html">Compress Images</a></li>
+                            <li><a href="background-remover.html">BG Remover</a></li>
+                            <li><a href="passport-size-with-name.html">Passport Photo</a></li>
+                            <li><a href="image-resize.html">Resize Images</a></li>
+                            <li><a href="ocr-tool.html">OCR (Image to Text)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company & Legal -->
+                    <div class="footer-links-column">
+                        <h3 class="footer-heading">Company</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Support</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                            <li><a href="disclaimer.html">Usage Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom-row">
+                    <div class="footer-copyright">
+                        &copy; 2026 Multi-Tool Suite. Built for privacy.
+                    </div>
+                    <div class="footer-status">
+                        <span class="status-indicator"></span>
+                        All Systems Operational
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const navBtn = document.getElementById('nav-dropdown-btn');
+        const navContent = document.getElementById('nav-dropdown-content');
+        if(navBtn && navContent) {
+            navBtn.addEventListener('click', (e) => { e.stopPropagation(); navContent.classList.toggle('show'); });
+            window.addEventListener('click', () => navContent.classList.remove('show'));
+        }
+    </script>
+</body>
+</html>

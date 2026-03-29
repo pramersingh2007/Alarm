@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add White Background - Multi-Tool Suite</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link id="font-stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JSZip Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dropzone {
+            border: 2px dashed var(--accent-color);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background-color: rgba(37, 99, 235, 0.05);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: var(--spacing-lg);
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+        .dropzone:hover {
+            background-color: rgba(37, 99, 235, 0.08);
+            border-style: solid;
+        }
+        
+        .image-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+        
+        .image-item {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .image-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .preview-box {
+            width: 100%;
+            background: #f8fafc;
+            background-image: 
+                linear-gradient(45deg, #f1f5f9 25%, transparent 25%), 
+                linear-gradient(-45deg, #f1f5f9 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%), 
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .preview-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        /* Senior UI Details */
+        summary::-webkit-details-marker { display: none; }
+        summary { list-style: none; outline: none; }
+        .form-section summary i.fa-chevron-down { transition: transform 0.3s; }
+        .form-section[open] summary i.fa-chevron-down { transform: rotate(180deg); }
+
+        @media (max-width: 1024px) {
+            .panel-content details { margin-bottom: 10px !important; }
+        }
+
+        .ai-status-badge {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .ai-loading { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .ai-ready { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    </style>
+</head>
+<body class="light-mode theme-inter layout-modern">
+    <div class="app-wrapper">
+        <!-- Global Navigation -->
+        <nav class="global-nav">
+            <div class="nav-dropdown">
+                <button class="nav-brand" id="nav-dropdown-btn">
+                    <i class="fa-solid fa-layer-group"></i> Multi-Tool Suite <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i>
+                </button>
+                <div class="nav-dropdown-content" id="nav-dropdown-content">
+                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="bio-data-maker.html"><i class="fa-solid fa-file-signature"></i> Bio Data Maker</a>
+                    <a href="image-compressor.html"><i class="fa-solid fa-compress"></i> Image Compressor</a>
+                    <a href="image-resize.html"><i class="fa-solid fa-expand"></i> Image Resize</a>
+                    <a href="passport-photo-crop.html"><i class="fa-solid fa-crop-simple"></i> Passport Photo Crop</a>
+                    <a href="passport-size-with-name.html"><i class="fa-solid fa-id-badge"></i> Passport Photo Maker</a>
+                    <a href="jpg-to-pdf.html"><i class="fa-solid fa-file-pdf"></i> JPG to PDF</a>
+                    <a href="pdf-to-jpg.html"><i class="fa-solid fa-image"></i> PDF to JPG</a>
+                    <a href="ocr-tool.html"><i class="fa-solid fa-file-lines"></i> OCR Tool</a>
+                    <a href="add-white-bg.html" class="active"><i class="fa-solid fa-square"></i> Add White BG</a>
+                    <a href="background-remover.html"><i class="fa-solid fa-eraser"></i> Background Remover</a>
+                </div>
+            </div>
+            <div class="nav-current-tool">
+                <span>Add White BG</span>
+            </div>
+        </nav>
+
+        <div class="app-container">
+            <aside class="left-panel">
+                <header class="panel-header">
+                    <div class="logo-title">
+                        <i class="fa-solid fa-square"></i>
+                        <h1>Add Background</h1>
+                    </div>
+                    <p class="subtitle">Flatten images with high-quality AI processing</p>
+                </header>
+                
+                <div class="panel-content" id="panel-content">
+                    <details class="form-section card" open>
+                        <summary style="font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fa-solid fa-magic"></i> AI Enhancement</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </summary>
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 10px; background: rgba(37, 99, 235, 0.05); padding: 12px; border-radius: 10px; border: 1px solid var(--accent-color); margin-top: 15px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="flex: 1;">
+                                    <label for="auto-remove" style="margin-bottom: 0; cursor: pointer; font-size: 0.9rem;">
+                                        Remove Background First
+                                        <span id="ai-status" class="ai-status-badge ai-ready">API Active</span>
+                                    </label>
+                                    <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">Professional AI removal (remove.bg)</p>
+                                </div>
+                                <input type="checkbox" id="auto-remove" style="width: 20px; height: 20px; cursor: pointer;">
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="form-section card" open>
+                        <summary style="font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fa-solid fa-palette"></i> Style Settings</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </summary>
+                        <div style="margin-top: 15px;">
+                            <div class="form-group">
+                                <label for="bg-color">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" style="width: 100%; height: 40px; padding: 0; border: none; cursor: pointer; border-radius: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="padding">Padding (px)</label>
+                                <input type="number" id="padding" value="0" min="0" max="200">
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <details class="form-section card" open>
+                        <summary style="font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fa-solid fa-sliders"></i> Export Config</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </summary>
+                        <div style="margin-top: 15px;">
+                            <div class="form-group">
+                                <label for="format">Output Format</label>
+                                <select id="format">
+                                    <option value="image/jpeg">JPEG (Optimized)</option>
+                                    <option value="image/png">PNG (Lossless)</option>
+                                    <option value="image/webp">WebP (Modern)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="quality">Quality</label>
+                                <input type="range" id="quality" min="1" max="100" value="95">
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <div class="card">
+                        <button id="btn-process" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" disabled>
+                            <i class="fa-solid fa-bolt"></i> Re-Process All
+                        </button>
+                        <button id="btn-download-all" class="btn" style="width: 100%; display: none; background: #10b981; color: white;">
+                            <i class="fa-solid fa-file-zipper"></i> Download All (ZIP)
+                        </button>
+                        <button id="btn-clear" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">
+                            <i class="fa-solid fa-trash-can"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            
+            <main class="right-panel">
+                <div class="right-panel-content">
+                    <div class="dropzone" id="dropzone" style="position: relative; overflow: hidden;">
+                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                        <h3>Drop your images here</h3>
+                        <p style="color: var(--text-muted);">Supports JPG, PNG, WebP, GIF</p>
+                        <input type="file" id="file-input" multiple accept="image/*" style="display: none;">
+                        
+                        <!-- AI Loading Overlay -->
+                        <div id="ai-loading" style="display: none; background: rgba(255,255,255,0.95); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                            <div class="fa-3x"><i class="fa-solid fa-circle-notch fa-spin" style="color: var(--accent-color);"></i></div>
+                            <h3 style="margin-top: 15px; color: var(--text-color);">AI Removing Background...</h3>
+                            <p style="color: var(--text-muted); padding: 0 20px;">This may take a few seconds for high-resolution images.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="image-list" class="image-list">
+                        <!-- Image previews -->
+                    </div>
+                </div>
+
+                <!-- Standard SEO & Information Section -->
+                <section class="seo-rich-content card">
+                    <div class="seo-grid">
+                        <div>
+                            <h2 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-star"></i> Key Features</h2>
+                            <ul class="seo-feature-list">
+                                <li><i class="fa-solid fa-check"></i> High-Quality AI Removal</li>
+                                <li><i class="fa-solid fa-check"></i> Automatic White Padding</li>
+                                <li><i class="fa-solid fa-check"></i> Batch Image Processing</li>
+                                <li><i class="fa-solid fa-check"></i> Multiple Export Formats</li>
+                                <li><i class="fa-solid fa-check"></i> 100% Private Processing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i> 100% Private & Secure</h2>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">All processing happens locally in your browser. Your files are <strong>never uploaded</strong> to any server (except for background removal requests via API).</p>
+                        </div>
+                    </div>
+                    <div class="faq-section">
+                        <h2 style="color: var(--accent-color); margin-bottom: 20px;"><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+                        <div class="faq-grid">
+                            <div class="faq-card">
+                                <h3>Why add a white background?</h3>
+                                <p>Many e-commerce platforms like Amazon and eBay require product photos to have a clean white background for better visibility.</p>
+                            </div>
+                            <div class="faq-card">
+                                <h3>Is there a limit on image size?</h3>
+                                <p>We recommend images under 10MB for the fastest processing and best results with the AI removal tool.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-collapse details on mobile
+        function handleMobileCollapse() {
+            const details = document.querySelectorAll('.panel-content details');
+            if (window.innerWidth <= 1024) {
+                details.forEach(d => d.removeAttribute('open'));
+            } else {
+                details.forEach(d => d.setAttribute('open', ''));
+            }
+        }
+        window.addEventListener('load', handleMobileCollapse);
+        window.addEventListener('resize', handleMobileCollapse);
+
+        // Basic nav toggle
+        const navBtn = document.getElementById('nav-dropdown-btn');
+        const navContent = document.getElementById('nav-dropdown-content');
+        if(navBtn && navContent) {
+            navBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navContent.classList.toggle('show');
+            });
+            window.addEventListener('click', () => {
+                navContent.classList.remove('show');
+            });
+        }
+    </script>
+    <script src="add-white-bg.js"></script>
+
+    <!-- Global Professional Footer -->
+    <footer class="professional-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-brand-section">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Multi-Tool Suite</span>
+                    </div>
+                    <p class="footer-tagline">Empowering your digital workflow with fast, private, and professional browser-based utilities.</p>
+                    <div class="footer-social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!-- Products: PDF -->
+                <div class="footer-links-column">
+                    <h3 class="footer-heading">PDF Solutions</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="pdf-merge.html">PDF Merger</a></li>
+                        <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+                        <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                        <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                        <li><a href="copy-pdf-text.html">Extract PDF Text</a></li>
+                    </ul>
+                </div>
+
+                <!-- Products: Images -->
+                <div class="footer-links-column">
+                    <h3 class="footer-heading">Image Tools</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="image-compressor.html">Compress Images</a></li>
+                        <li><a href="background-remover.html">BG Remover</a></li>
+                        <li><a href="passport-size-with-name.html">Passport Photo</a></li>
+                        <li><a href="image-resize.html">Resize Images</a></li>
+                        <li><a href="ocr-tool.html">OCR (Image to Text)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company & Legal -->
+                <div class="footer-links-column">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Usage Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom-row">
+                <div class="footer-copyright">
+                    &copy; 2026 Multi-Tool Suite. Built for privacy.
+                </div>
+                <div class="footer-status">
+                    <span class="status-indicator"></span>
+                    All Systems Operational
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
